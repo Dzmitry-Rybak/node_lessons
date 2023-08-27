@@ -1,9 +1,13 @@
 const http = require('http')
-const {getComments, getHtml, getHttp, handleNotFound, postComments} = require('./handlers')
+const {getComments, getHtml, getHttp, handleNotFound, postComments, getHome} = require('./handlers')
 
 const PORT = 5000;
 
 const server = http.createServer((req, res) => { // callback функция юудет вызвана при каждом запросе клиента
+    if (req.method === 'GET' && req.url === '/') {
+        return getHome(req, res)
+    }
+
     if (req.method === 'GET' && req.url === '/http') {
         return getHttp(req, res)
     }
