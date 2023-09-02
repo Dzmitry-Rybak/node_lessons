@@ -10,13 +10,17 @@ const upperCaseStream = new Transform({
 })
 
 const reverseStream = new Transform({
-    transform: function (chunk, encoding, callback) {
-        const reversedString = chunk.toString().split('').reverse().join('')
+    transform(chunk, encoding, callback) {
+        const arrOfChunk = chunk.toString().split(''); // Разбили полученную строку на массив
+        const lastElem = arrOfChunk.pop(); // Доставли последний эллемент (переход на новую строку) из массива
+        const reversedString = arrOfChunk.reverse().concat(lastElem).join('') // после переворачивания букв, добавлем переход на новую строку
         callback(null, reversedString)
     }
 })
 
-process.stdin.pipe(upperCaseStream).pipe(reverseStream).pipe(process.stdout)
+process.stdin.pipe(upperCaseStream)
+             .pipe(reverseStream)
+             .pipe(process.stdout)
 
 
 
