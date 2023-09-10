@@ -1,0 +1,15 @@
+{
+  "name": "11-env",
+  "version": "1.0.0",
+  "description": "Lesson about 'environment variable', 'dotenv' in node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Dzmitry",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
+}
